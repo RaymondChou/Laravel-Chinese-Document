@@ -1,79 +1,66 @@
-# Installation & Setup
+# 安装与设置
 
-## Contents
+## 内容
 
-- [Requirements](#requirements)
-- [Installation](#installation)
-- [Server Configuration](#server-configuration)
-- [Basic Configuration](#basic-configuration)
-- [Environments](#environments)
-- [Cleaner URLs](#cleaner-urls)
+- [要求](#requirements)
+- [安装](#installation)
+- [服务器配置](#server-configuration)
+- [基本设置](#basic-configuration)
+- [环境设置](#environments)
+- [友好的链接](#cleaner-urls)
 
 <a name="requirements"></a>
-## Requirements
+## 安装要求
 
-- Apache, nginx, or another compatible web server.
-- Laravel takes advantage of the powerful features that have become available in PHP 5.3. Consequently, PHP 5.3 is a requirement.
-- Laravel uses the [FileInfo library](http://php.net/manual/en/book.fileinfo.php) to detect files' mime-types. This is included by default with PHP 5.3. However, Windows users may need to add a line to their php.ini file before the Fileinfo module is enabled. For more information check out the [installation / configuration details on PHP.net](http://php.net/manual/en/fileinfo.installation.php).
-- Laravel uses the [Mcrypt library](http://php.net/manual/en/book.mcrypt.php) for encryption and hash generation. Mcrypt typically comes pre-installed. If you can't find Mcrypt in the output of phpinfo() then check the vendor site of your LAMP installation or check out the [installation / configuration details on PHP.net](http://php.net/manual/en/book.mcrypt.php).
+- Apache, nginx, 或者其他web服务器。
+- Laravel 框架应用了很多PHP 5.3版才具备的强大的新特性，所以你必须安装PHP5.3或者以上版本。
+- Laravel 使用[FileInfo库](http://php.net/manual/en/book.fileinfo.php)来检测mime类型。PHP 5.3版已经默认包含了FileInfo库。Windows用户需要在php.ini中启用该拓展。关于FileInfo库的更多信息阅读 [installation / configuration details on PHP.net](http://php.net/manual/en/fileinfo.installation.php)。
+- Laravel 使用[Mcrypt库](http://php.net/manual/en/book.mcrypt.php) 来加密和生成哈希。PHP 5.3已经预装了Mcrypt库。如果你在phpinfo()中没有找到Mcrypt已经启用的信息，请检查你的服务器环境是否安装完全，或者查看PHP手册中 [Mcrypt库](http://php.net/manual/en/book.mcrypt.php)有关信息。
 
 <a name="installation"></a>
-## Installation
+## 安装
 
-1. [Download Laravel](http://laravel.com/download)
-2. Extract the Laravel archive and upload the contents to your web server.
-3. Set the value of the **key** option in the **config/application.php** file to a random, 32 character string.
-4. Verify that the `storage/views` directory is writable.
-5. Navigate to your application in a web browser.
+1. [下载 Laravel](http://laravel.com/download)
+2. 解压Laravel压缩包，然后上传文件到你的web服务器。
+3. 在config/application.php中设置application key，你可以设置为任意的32位字符串。
+4. 确保`storage/views`文件夹具有写入权限。
+5. 现在你可以尝试在浏览器中运行框架。
 
-If all is well, you should see a pretty Laravel splash page. Get ready, there is lots more to learn!
+如果不出意外，你应该看到了Laravel漂亮的初始页面。一切准备就绪，我们可以继续Laravel学习之旅!
 
-### Extra Goodies
+### 选装程序
 
-Installing the following goodies will help you take full advantage of Laravel, but they are not required:
+如果你想充分了解和学习Laravel框架的应用，推荐你安装一下程序：
 
-- SQLite, MySQL, PostgreSQL, or SQL Server PDO drivers.
-- Memcached or APC.
+- SQLite, MySQL, PostgreSQL, 或者 SQL Server PDO 驱动.
+- Memcached 或者 APC.
 
-### Problems?
+### 遇到问题怎么办？
 
-If you are having problems installing, try the following:
+如果你在安装过程中遇到了问题，可以检查以下情况：
 
-- Make sure the **public** directory is the document root of your web server. (see: Server Configuration below)
-- If you are using mod_rewrite, set the **index** option in **application/config/application.php** to an empty string.
-- Verify that your storage folder and the folders within are writable by your web server.
+- 请确保**public**文件夹是服务器的根目录，如果不是，你可以尝试访问Laravel的public文件夹，如http:localhost/public/。
+- 如果你启用了mod_rewrite拓展，请把**application/config/application.php**文件中的**index**参数设置为空。
+- 请确保服务器的storage目录及其子目录具有写入权限。
 
 <a name="server-configuration"></a>
-## Server Configuration
+## 服务器配置
 
-Like most web-development frameworks, Laravel is designed to protect your application code, bundles, and local storage by placing only files that are necessarily public in the web server's DocumentRoot. This prevents some types of server misconfiguration from making your code (including database passwords and other configuration data) accessible through the web server. It's best to be safe. 
-
-In this example let's imagine that we installed Laravel to the directory **/Users/JonSnow/Sites/MySite**.
-
-A very basic example of an Apache VirtualHost configuration for MySite might look like this.
-
-	<VirtualHost *:80>
-		DocumentRoot /Users/JonSnow/Sites/MySite/public
-		ServerName mysite.dev
-	</VirtualHost>
-
-Notice that while we installed to **/Users/JonSnow/Sites/MySite** our DocumentRoot points to **/Users/JonSnow/Sites/MySite/public**.
-
-While pointing the DocumentRoot to the public folder is a commonly used best-practice, it's possible that you may need to use Laravel on a host that does not allow you to update your DocumentRoot. A collection of algorithms to circumvent this need can be found [on the Laravel forums.](http://forums.laravel.com/viewtopic.php?id=1258)
+Laravel框架只把允许公众访问的文件放在web服务器的根目录(public)，可以有效的防止因为服务器的设置错误而泄露重要信息资料（译者：前提是你遵守Laravel的安装步骤，如果你的整个Laravel框架在服务器的根目录，请检查除public以外其他目录的访问权限）。
 
 <a name="basic-configuration"></a>
-## Basic Configuration
+## 基本设置
 
-All of the configuration provided are located in your applications config/ directory. We recommend that you read through these files just to get a basic understanding of the options available to you. Pay special attention to the **application/config/application.php** file as it contains the basic configuration options for your application.
+Laravel框架的所有配置文件都存放在应用程序的config文件夹中，建议你把所有的配置文件都看一下，对应用程序的设置可以有一个基本的了解。你应该注意一下**application/config/application.php**文件，它包含了应用程序的基本设置。
 
-It's **extremely** important that you change the **application key** option before working on your site. This key is used throughout the framework for encryption, hashing, etc. It lives in the **config/application.php** file and should be set to a random, 32 character string. A standards-compliant application key can be automatically generated using the Artisan command-line utility.  More information can be found in the [Artisan command index](/docs/artisan/commands).
+在开发或者启用网站之前，你应该首先修改**application/config/application.php**中的**application key**。Laravel会用它来加密或者生成哈希。你可以手动设置一个32位的随机字符串，也可以使用Laravel提供的Artisan命令行工具来生成一个符合标准的字符串。有关Aartisan工具信息可以访问：Artisan command index](/docs/artisan/commands)。
 
-> **Note:** If you are using mod_rewrite, you should set the index option to an empty string.
+> **Note:** 如果你启用了mod_rewrite，你应该把index参数设置为空。
 
 <a name="environments"></a>
-## Environments
+## 环境设置
 
-Most likely, the configuration options you need for local development are not the same as the options you need on your production server. Laravel's default environment handling mechanism is URL based, which will make setting up environments a breeze. Pop open the `paths.php` file in the root of your Laravel installation. You should see an array like this:
+通常情况下，应用程序的开发环境和正式生产环境的设置是不同的，Laravel使用的URL机制可以让你轻而易举的解决这个问题。打开Laravel框架的安装目录你可以看到下面的数组：
 
 	$environments = array(
 
@@ -81,9 +68,9 @@ Most likely, the configuration options you need for local development are not th
 
 	);
 
-This tells Laravel that any URLs beginning with "localhost" or ending with ".dev" should be considered part of the "local" environment.
+这个数组表示任何以"localhost"开头或者以"*.dev"结尾的请求，都被视为"local"环境。
 
-Next, create an **application/config/local** directory. Any files and options you place in this directory will override the options in the base **application/config** directory. For example, you may wish to create an **application.php** file within your new **local** configuration directory:
+然后，建立**application/config/local**文件夹，那么local文件夹下面的任何设置都会覆盖**application/config**中的基本设置。举个例子，你希望在新建的**local**目录中创建一个**application.php**文件：
 
 	return array(
 
@@ -91,14 +78,14 @@ Next, create an **application/config/local** directory. Any files and options yo
 
 	);
 
-In this example, the local **URL** option will override the **URL** option in **application/config/application.php**. Notice that you only need to specify the options you wish to override.
+在这个例子中，local中的**URL**设置会覆盖**application/config/application.php**文件中的**URL**设置。需要注意的是，你只需要指定那些你想要覆盖的设置。
 
-Isn't it easy? Of course, you are free to create as many environments as you wish!
+Laravel的环境设置就是这么简单，你可以用它来创建你需要的环境。
 
 <a name="cleaner-urls"></a>
-## Cleaner URLs
+## 友好的链接
 
-Most likely, you do not want your application URLs to contain "index.php". You can remove it using HTTP rewrite rules. If you are using Apache to serve your application, make sure to enable mod_rewrite and create a **.htaccess** file like this one in your **public** directory:
+通常情况下，你不想"index.php"出现在网站的链接中，那么你可以用rewrite重定向来去掉"index.php"。如果你使用的是Apache服务器，请启用mod_rewrite模块，然后在你的public目录建立一个**.htaccess**文件：
 
 	<IfModule mod_rewrite.c>
 	     RewriteEngine on
@@ -109,7 +96,7 @@ Most likely, you do not want your application URLs to contain "index.php". You c
 	     RewriteRule ^(.*)$ index.php/$1 [L]
 	</IfModule>
 
-Is the .htaccess file above not working for you? Try this one:
+如果上面的htaccess文件没有效果，可以试试下面的写法：
 
 	Options +FollowSymLinks
 	RewriteEngine on
@@ -119,6 +106,6 @@ Is the .htaccess file above not working for you? Try this one:
 
 	RewriteRule . index.php [L]
 
-After setting up HTTP rewriting, you should set the **index** configuration option in **application/config/application.php** to an empty string.
+在设置了重定向之后，你还应该把**application/config/application.php**中的**index**参数设置为空。
 
-> **Note:** Each web server has a different method of doing HTTP rewrites, and may require a slightly different .htaccess file.
+> **Note:** 不同服务器的rewrite方法有所不同，请根据具体情况配置。
