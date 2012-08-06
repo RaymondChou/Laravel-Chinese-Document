@@ -14,7 +14,7 @@
 
 - Apache, nginx, 或者其他web服务器。
 - Laravel 框架应用了很多PHP 5.3版才具备的强大的新特性，所以你必须安装PHP5.3或者以上版本。
-- Laravel 使用[FileInfo库](http://php.net/manual/en/book.fileinfo.php)来检测mime类型。PHP 5.3版已经默认包含了FileInfo库。Windows用户需要在php.ini中启用该拓展。关于FileInfo库的更多信息阅读 [installation / configuration details on PHP.net](http://php.net/manual/en/fileinfo.installation.php)。
+- Laravel 使用[FileInfo库](http://php.net/manual/en/book.fileinfo.php)来检测mime类型。PHP 5.3版已经默认包含了FileInfo库。Windows用户需要在php.ini中启用该模块。关于FileInfo库的更多信息请阅读：[installation / configuration details on PHP.net](http://php.net/manual/en/fileinfo.installation.php)。
 - Laravel 使用[Mcrypt库](http://php.net/manual/en/book.mcrypt.php) 来加密和生成哈希。PHP 5.3已经预装了Mcrypt库。如果你在phpinfo()中没有找到Mcrypt已经启用的信息，请检查你的服务器环境是否安装完全，或者查看PHP手册中 [Mcrypt库](http://php.net/manual/en/book.mcrypt.php)有关信息。
 
 <a name="installation"></a>
@@ -23,19 +23,19 @@
 1. [下载 Laravel](http://laravel.com/download)
 2. 解压Laravel压缩包，然后上传文件到你的web服务器。
 3. 在config/application.php中设置application key，你可以设置为任意的32位字符串。
-4. 确保`storage/views`文件夹具有写入权限。
+4. 确保`storage/views`目录具有写入权限。
 5. 现在你可以尝试在浏览器中运行框架。
 
 如果不出意外，你应该看到了Laravel漂亮的初始页面。一切准备就绪，我们可以继续Laravel学习之旅!
 
 ### 选装程序
 
-如果你想充分了解和学习Laravel框架的应用，推荐你安装一下程序：
+如果你想充分了解和学习Laravel框架的应用，推荐你安装以下程序：
 
-- SQLite, MySQL, PostgreSQL, 或者 SQL Server PDO 驱动.
+- SQLite, MySQL, PostgreSQL, 或者 SQL Server PDO driver.
 - Memcached 或者 APC.
 
-### 遇到问题怎么办？
+### 安装遇到问题？
 
 如果你在安装过程中遇到了问题，可以检查以下情况：
 
@@ -60,7 +60,7 @@ Laravel框架的所有配置文件都存放在应用程序的config文件夹中�
 <a name="environments"></a>
 ## 环境设置
 
-通常情况下，应用程序的开发环境和正式生产环境的设置是不同的，Laravel使用的URL机制可以让你轻而易举的解决这个问题。打开Laravel框架的安装目录你可以看到下面的数组：
+通常情况下，应用程序的开发环境和正式生产环境的设置是不同的，Laravel使用的URL机制可以让你轻而易举的解决这个问题。打开Laravel框架的安装目录下的**paths.php**文件，你可以看到下面的数组：
 
 	$environments = array(
 
@@ -85,7 +85,7 @@ Laravel的环境设置就是这么简单，你可以用它来创建你需要的�
 <a name="cleaner-urls"></a>
 ## 友好的链接
 
-通常情况下，你不想"index.php"出现在网站的链接中，那么你可以用rewrite重定向来去掉"index.php"。如果你使用的是Apache服务器，请启用mod_rewrite模块，然后在你的public目录建立一个**.htaccess**文件：
+通常情况下，你不想"index.php"出现在网站的链接中，那么你可以用rewrite重定向来去掉"index.php"。如果你使用的是Apache服务器，请启用mod_rewrite模块，然后在你的public目录建立一个**.htaccess**文件,内容如下：
 
 	<IfModule mod_rewrite.c>
 	     RewriteEngine on
@@ -109,3 +109,8 @@ Laravel的环境设置就是这么简单，你可以用它来创建你需要的�
 在设置了重定向之后，你还应该把**application/config/application.php**中的**index**参数设置为空。
 
 > **Note:** 不同服务器的rewrite方法有所不同，请根据具体情况配置。
+
+## Links
+
+- 目录
+- 下一节
