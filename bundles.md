@@ -1,6 +1,6 @@
 # 插件包
 
-## 内容
+## 目录
 
 - [基础](#the-basics)
 - [创建插件包](#creating-bundles)

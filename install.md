@@ -1,6 +1,6 @@
 # 安装与设置
 
-## 内容
+## 目录
 
 - [要求](#requirements)
 - [安装](#installation)
