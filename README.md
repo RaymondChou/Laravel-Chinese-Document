@@ -8,3 +8,4 @@ Laravel是一个简洁而优秀的php框架，这个项目的目的是翻译Lara
 由于是个人行为，如果翻译不当，请pull request。
 
 - [安装与设置](https://github.com/zither/Laravel-Chinese-Document/blob/master/install.md "安装与设置")
+- [插件包](https://github.com/zither/Laravel-Chinese-Document/blob/master/bundles.md "插件包")

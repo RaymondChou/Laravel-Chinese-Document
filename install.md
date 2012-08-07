@@ -112,5 +112,5 @@ Laravel的环境设置就是这么简单，你可以用它来创建你需要的�
 
 ## Links
 
-- 目录
+- [目录](https://github.com/zither/Laravel-Chinese-Document/blob/master/README.md)
 - 下一节

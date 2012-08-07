@@ -1,29 +1,29 @@
-# Bundles
+# 插件包
 
-## Contents
+## 内容
 
-- [The Basics](#the-basics)
-- [Creating Bundles](#creating-bundles)
-- [Registering Bundles](#registering-bundles)
-- [Bundles & Class Loading](#bundles-and-class-loading)
-- [Starting Bundles](#starting-bundles)
-- [Routing To Bundles](#routing-to-bundles)
-- [Using Bundles](#using-bundles)
-- [Bundle Assets](#bundle-assets)
-- [Installing Bundles](#installing-bundles)
-- [Upgrading Bundles](#upgrading-bundles)
+- [基础](#the-basics)
+- [创建插件包](#creating-bundles)
+- [注册插件包](#registering-bundles)
+- [插件包与类加载](#bundles-and-class-loading)
+- [启动插件包](#starting-bundles)
+- [插件包路由](#routing-to-bundles)
+- [使用插件包](#using-bundles)
+- [插件包的静态文件](#bundle-assets)
+- [安装插件包](#installing-bundles)
+- [升级插件包](#upgrading-bundles)
 
 <a name="the-basics"></a>
-## The Basics
+## 基础
 
-Bundles are the heart of the improvements that were made in Laravel 3.0. They are a simple way to group code into convenient "bundles". A bundle can have it's own views, configuration, routes, migrations, tasks, and more. A bundle could be everything from a database ORM to a robust authentication system. Modularity of this scope is an important aspect that has driven virtually all design decisions within Laravel. In many ways you can actually think of the application folder as the special default bundle with which Laravel is pre-programmed to load and use.
+插件包是Laravel 3.0 改进中最核心的部分。插件包让我们能更加方便的把代码组织到一个模块中。每个插件包都可以包含自己的视图、设置、路由、数据库迁移、任务等。你可以把插件包用到任何地方，它可以是一个对象关系数据库映射，也可以是一个强大的身份验证系统。插件包的代码模块化是驱动Laravel所有设计决策的重要方面。你甚至可以把整个application目录看作是一个Laravel框架默认加载和使用的插件包。
 
 <a name="creating-and-registering"></a>
-## Creating Bundles
+## 创建插件包
 
-The first step in creating a bundle is to create a folder for the bundle within your **bundles** directory. For this example, let's create an "admin" bundle, which could house the administrator back-end to our application. The **application/start.php** file provides some basic configuration that helps to define how our application will run. Likewise we'll create a **start.php** file within our new bundle folder for the same purpose. It is run everytime the bundle is loaded. Let's create it:
+在创建一个插件包之前，你必须在**bundles**目录为它新建一个文件夹。比如我们要建立一个"admin"插件包，作为我们应用的管理后台。在**application/start.php**文件中提供的基本配置可以帮助我们限定应用程序如何运行。同样，我们要在新建的插件包文件夹中创建一个start.php文件，每次加载插件包的时候它都会运行。让我们来创建它：
 
-#### Creating a bundle start.php file:
+#### 为插件包创建一个start.php文件:
 
 	<?php
 
@@ -31,22 +31,22 @@ The first step in creating a bundle is to create a folder for the bundle within 
 		'Admin' => Bundle::path('admin').'models',
 	));
 
-In this start file we've told the auto-loader that classes that are namespaced to "Admin" should be loaded out of our bundle's models directory. You can do anything you want in your start file, but typically it is used for registering classes with the auto-loader. **In fact, you aren't required to create a start file for your bundle.**
+在这个start文件中，我们让自动加载类自动加载在admin命名空间中定义的models目录下的类。你可以在start文件中做任何事情，但是通常情况下，我们用它来自动加载需要的文件。**事实上，你并不一定要为应用包建立一个启动文件。**
 
-Next, we'll look at how to register this bundle with our application!
+然后，我们来看怎么为应用程序注册一个插件包！
 
 <a name="registering-bundles"></a>
-## Registering Bundles
+## 注册插件包
 
-Now that we have our admin bundle, we need to register it with Laravel. Pull open your **application/bundles.php** file. This is where you register all bundles used by your application. Let's add ours:
+先我们建立了一个admin插件包，我们需要在Laravel中注册它。打开**application/bundles.php**文件。我们应用程序使用的所有插件包都在这里注册的。让我们把admin插件包添加进去：
 
-#### Registering a simple bundle:
+#### 注册一个简单的插件包:
 
 	return array('admin'),
 
-By convention, Laravel will assume that the Admin bundle is located at the root level of the bundle directory, but we can specify another location if we wish:
+默认情况下，Laravel会假设Admin插件包是在插件目录的根目录下，但是我们也可以自定义插件包路径。
 
-#### Registering a bundle with a custom location:
+#### 注册一个自定义路径的插件包:
 
 	return array(
 
@@ -54,14 +54,14 @@ By convention, Laravel will assume that the Admin bundle is located at the root 
 
 	);
 
-Now Laravel will look for our bundle in **bundles/userscape/admin**.
+现在Laravel会在**bundles/userscape/admin**目录中寻找admin插件包。
 
 <a name="bundles-and-class-loading"></a>
-## Bundles & Class Loading
+## 插件包与类加载
 
-Typically, a bundle's **start.php** file only contains auto-loader registrations. So, you may want to just skip **start.php** and declare your bundle's mappings right in its registration array. Here's how:
+通常情况下，插件包的**start.php**文件只包含了自动加载注册信息。因此有时候你希望跳过**start.php**文件，直接在注册数组中声明自己的插件包映射信息。可以用下面的方法：
 
-#### Defining auto-loader mappings in a bundle registration:
+#### 在插件注册数组中定义自动加载映射：
 
 	return array(
 
@@ -81,26 +81,26 @@ Typically, a bundle's **start.php** file only contains auto-loader registrations
 
 	);
 
-Notice that each of these options corresponds to a function on the Laravel [auto-loader](/docs/loading). In fact, the value of the option will automatically be passed to the corresponding function on the auto-loader.
+请注意，这里的每一项设置都对应Laravel[auto-loader](/docs/loading)中的一个函数。事实上，每一项设置的参数都会自动传递给auto-loader中对应的函数。
 
-You may have also noticed the **(:bundle)** place-holder. For convenience, this will automatically be replaced with the path to the bundle. It's a piece of cake.
+你还要注意下**(:bundle)**占位符。它会自动替换为插件包的路径。
 
 <a name="starting-bundles"></a>
-## Starting Bundles
+## 启动插件包
 
-So our bundle is created and registered, but we can't use it yet. First, we need to start it:
+现在我们已经创建并注册了插件包，但是我们还不能使用它，我们需要先启动它：
 
-#### Starting a bundle:
+#### 启用一个插件包:
 
 	Bundle::start('admin');
 
-This tells Laravel to run the **start.php** file for the bundle, which will register its classes in the auto-loader. The start method will also load the **routes.php** file for the bundle if it is present.
+这行代码告诉Laravel执行插件包的**start.php**文件，并在auto-loader中注册。如果插件包存在**routes.php**文件，start方法也会自动加载。
 
-> **Note:** The bundle will only be started once. Subsequent calls to the start method will be ignored.
+> **Note:** 插件包只会启动一次，重复的请求都会被start方法忽略。
 
-If you use a bundle throughout your application, you may want it to start on every request. If this is the case, you can configure the bundle to auto-start in your **application/bundles.php** file:
+如果你在应用程序中使用了一个插件包，但是又不想每次使用前都手动启动它。那么你可以在**application/bundles.php**文件中，把它设置为自动启动：
 
-#### Configuration a bundle to auto-start:
+#### 把插件包设置为自动启动:
 
 	return array(
 
@@ -108,103 +108,103 @@ If you use a bundle throughout your application, you may want it to start on eve
 
 	);
 
-You do not always need to explicitly start a bundle. In fact, you can usually code as if the bundle was auto-started and Laravel will take care of the rest. For example, if you attempt to use a bundle views, configurations, languages, routes or filters, the bundle will automatically be started!
+如果插件包被设置为自动启动，那你不必要再去手动启用一个插件包，你只需要直接使用它，剩余的工作都交给Laravel去完成。如果你尝试使用插件包的视图文件，那么插件包的配置文件、语言文件、路由或者过滤器都会自动启用。
 
-Each time a bundle is started, it fires an event. You can listen for the starting of bundles like so:
+每当一个插件包启动成功，都将触发一个事件。你可以用下面的方法来监听已经启动的插件包：
 
-#### Listen for a bundle's start event:
+#### 监听插件包的启动事件:
 
 	Event::listen('laravel.started: admin', function()
 	{
 		// The "admin" bundle has started...
 	});
 
-It is also possible to "disable" a bundle so that it will never be started.
+同样还可以将一个插件包设置为不可启用，那么这个插件包就不能被启用了。
 
-#### Disabling a bundle so it can't be started:
+#### 把插件包设置为不可启用:
 
 	Bundle::disable('admin');
 
 <a name="routing-to-bundles"></a>
-## Routing To Bundles
+## 插件包路由
 
-Refer to the documentation on [bundle routing](/docs/routing#bundle-routes) and [bundle controllers](/docs/controllers#bundle-controllers) for more information on routing and bundles.
+更多关于插件包路由和控制器的信息可以阅读：[bundle routing](/docs/routing#bundle-routes)和[bundle controllers](/docs/controllers#bundle-controllers)。
 
 <a name="using-bundles"></a>
-## Using Bundles
+## 使用插件包
 
-As mentioned previously, bundles can have views, configuration, language files and more. Laravel uses a double-colon syntax for loading these items. So, let's look at some examples:
+前面已经说过，插件包可以包含自己的视图、配置、语言等文件。在Laravel框架中可以通过双冒号来使用它们。让我们看下面的例子：
 
-#### Loading a bundle view:
+#### 获取插件包视图:
 
 	return View::make('bundle::view');
 
-#### Loading a bundle configuration item:
+#### 获取插件包配置:
 
 	return Config::get('bundle::file.option');
 
-#### Loading a bundle language line:
+#### 获取插件包语言:
 
 	return Lang::line('bundle::file.line');
 
-Sometimes you may need to gather more "meta" information about a bundle, such as whether it exists, its location, or perhaps its entire configuration array. Here's how:
+有些时候你想要获取插件包更多的"meta"信息，比如插件包是否存在、插件包路径或者插件包的配置数组。那么可以用下面的方法：
 
-#### Determine whether a bundle exists:
+#### 确认插件包是否存在:
 
 	Bundle::exists('admin');
 
-#### Retrieving the installation location of a bundle:
+#### 获取插件包的安装路径:
 
 	$location = Bundle::path('admin');
 
-#### Retrieving the configuration array for a bundle:
+#### 获取插件包的配置:
 
 	$config = Bundle::get('admin');
 
-#### Retrieving the names of all installed bundles:
+#### 获取所有已安装的插件包名:
 
 	$names = Bundle::names();
 
 <a name="bundle-assets"></a>
-## Bundle Assets
+## 插件包静态文件
 
-If your bundle contains views, it is likely you have assets such as JavaScript and images that need to be available in the **public** directory of the application. No problem. Just create **public** folder within your bundle and place all of your assets in this folder.
+如果你的插件包包含视图，并且希望它们能像Javascript和images文件一样在**public**目录被调用。方法很简单，只需要在你的插件包目录中新建一个**public**文件夹，然后把静态文件放到里面即可。
 
-Great! But, how do they get into the application's **public** folder. The Laravel "Artisan" command-line provides a simple command to copy all of your bundle's assets to the public directory. Here it is:
+但是现在我们怎么把它们放到应用程序的**public**文件夹中呢？Laravel框架的"Artisan"命令行工具提供了一个简单的命令可以把插件包assets文件夹中的文件复制到public目录中：
 
 #### Publish bundle assets into the public directory:
 
 	php artisan bundle:publish
 
-This command will create a folder for the bundle's assets within the application's **public/bundles** directory. For example, if your bundle is named "admin", a **public/bundles/admin** folder will be created, which will contain all of the files in your bundle's public folder.
+这条命令会在public目录中为bundles创建一个**public/bundles**目录。比如你的插件包叫"admin"，那么就会建立一个**public/bundles/admin**文件夹，里面包含了所有admin插件包public目录里的文件。
 
-For more information on conveniently getting the path to your bundle assets once they are in the public directory, refer to the documentation on [asset management](/docs/views/assets#bundle-assets).
+更多与插件包assets相关的信息可以阅读：[asset management](/docs/views/assets#bundle-assets)。
 
 <a name="installing-bundles"></a>
-## Installing Bundles
+## 安装插件包
 
-Of course, you may always install bundles manually; however, the "Artisan" CLI provides an awesome method of installing and upgrading your bundle. The framework uses simple Zip extraction to install the bundle. Here's how it works.
+很多时候我们都需要手动安装插件包，不过"Artisan"CLI工具提供了一种更好的方法来安装和升级插件包。Laravel可以通过解压ZIP压缩包来安装插件包：
 
-#### Installing a bundle via Artisan:
+#### 通过Artisan安装插件包:
 
 	php artisan bundle:install eloquent
 
-Great! Now that you're bundle is installed, you're ready to [register it](#registering-bundles) and [publish its assets](#bundle-assets).
+命令执行完插件包就安装成功了，现在你可以[注册它](#registering-bundles)，[发布它的assets文件](#bundle-assets)了。
 
-Need a list of available bundles? Check out the Laravel [bundle directory](http://bundles.laravel.com)
+可以访问官方的[Laravel bundle directory](http://bundles.laravel.com)获得优秀的插件包。
 
 <a name="upgrading-bundles"></a>
-## Upgrading Bundles
+## 升级插件包
 
-When you upgrade a bundle, Laravel will automatically remove the old bundle and install a fresh copy.
+当你升级插件包时，Laravel会自动移除旧的插件包，然后重新安装。
 
-#### Upgrading a bundle via Artisan:
+#### 通过Artisan升级插件包:
 
 	php artisan bundle:upgrade eloquent
 
-> **Note:** After upgrading the bundle, you may need to [re-publish its assets](#bundle-assets).
+> **Note:** 在升级插件包之后,你需要重新[发布插件包的assets文件](#bundle-assets)。
 
-**Important:** Since the bundle is totally removed on an upgrade, you must be aware of any changes you have made to the bundle code before upgrading. You may need to change some configuration options in a bundle. Instead of modifying the bundle code directly, use the bundle start events to set them. Place something like this in your **application/start.php** file.
+**重要提醒:** 当插件包在升级重新安装成功之后，你必须留意插件包升级前的所有变动，你可能需要再次修改插件包的配置，修改插件包的目录等。可以用插件包的启动事件来设置它们，把类似下面的代码加入到**application/start.php**文件中：
 
 #### Listening for a bundle's start event:
 
