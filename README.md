@@ -11,3 +11,4 @@ Laravel是一个简洁而优雅的php框架，这个项目的目的是翻译Lara
 - [控制器](https://github.com/zither/Laravel-Chinese-Document/blob/master/controllers.md "控制器")
 - [模型](https://github.com/zither/Laravel-Chinese-Document/blob/master/models.md "模型")
 - [插件包](https://github.com/zither/Laravel-Chinese-Document/blob/master/bundles.md "插件包")
+- [运行配置](https://github.com/zither/Laravel-Chinese-Document/blob/master/config.md "运行配置")
