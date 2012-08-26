@@ -1,36 +1,36 @@
-# Working With Files
+# 文件操作类
 
-## Contents
+## 目录
 
-- [Reading Files](#get)
-- [Writing Files](#put)
-- [File Uploads](#upload)
-- [File Extensions](#ext)
-- [Checking File Types](#is)
-- [Getting MIME Types](#mime)
-- [Copying Directories](#cpdir)
-- [Removing Directories](#rmdir)
+- [读取文件](#get)
+- [写入文件](#put)
+- [上传文件](#upload)
+- [文件拓展名](#ext)
+- [检测文件类型](#is)
+- [获取MIME类型](#mime)
+- [复制目录](#cpdir)
+- [删除目录](#rmdir)
 
 <a name="get"></a>
-## Reading Files
+## 读取文件
 
-#### Getting the contents of a file:
+#### 读取指定文件内容:
 
 	$contents = File::get('path/to/file');
 
 <a name="put"></a>
-## Writing Files
+## 写入文件
 
-#### Writing to a file:
+#### 把内容写入文件：
 
 	File::put('path/to/file', 'file contents');
 
-#### Appending to a file:
+#### 追加内容:
 
 	File::append('path/to/file', 'appended file content');
 
 <a name="upload"></a>
-## File Uploads
+## 上传文件
 
 #### Moving a $_FILE to a permanent location:
 
@@ -39,16 +39,16 @@
 > **Note:** You can easily validate file uploads using the [Validator class](/docs/validation).
 
 <a name="ext"></a>
-## File Extensions
+## 文件拓展名
 
-#### Getting the extension from a filename:
+#### 获取拓展名:
 
 	File::extension('picture.png');
 
 <a name="is"></a>
-## Checking File Types
+## 检测文件类型
 
-#### Determining if a file is given type:
+#### 确保是指定类型的文件:
 
 	if (File::is('jpg', 'path/to/file.jpg'))
 	{

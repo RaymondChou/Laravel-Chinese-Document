@@ -1,14 +1,14 @@
-# Class Auto Loading
+# 自动加载类
 
-## Contents
+## 目录
 
-- [The Basics](#the-basics)
-- [Registering Directories](#directories)
-- [Registering Mappings](#mappings)
-- [Registering Namespaces](#namespaces)
+- [基础](#the-basics)
+- [注册目录](#directories)
+- [注册文件](#mappings)
+- [注册命名空间](#namespaces)
 
 <a name="the-basics"></a>
-## The Basics
+## 基础
 
 Auto-loading allows you to lazily load class files when they are needed without explicitly *requiring* or *including* them. So, only the classes you actually need are loaded for any given request to your application, and you can just jump right in and start using any class without loading it's related file.
 
