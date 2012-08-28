@@ -55,15 +55,15 @@
 		//
 	}
 
-The **is** method does not simply check the file extension. The Fileinfo PHP extension will be used to read the content of the file and determine the actual MIME type.
+文件操作类的**is**方法并不是仅仅简单的检查文件拓展名，它会使用PHP的Fileinfo拓展来读取文件内容，以确保取得正确的MIME类型。
 
-> **Note:** You may pass any of the extensions defined in the **application/config/mimes.php** file to the **is** method.
-> **Note:** The Fileinfo PHP extension is required for this functionality. More information can be found on the [PHP Fileinfo page](http://php.net/manual/en/book.fileinfo.php).
+> **Note:** 你可以在**application/config/mimes.php**中为**is**方法定义添加任何默认允许的拓展名。
+> **Note:** 使用函数前需安装Fileinfo拓展，更多相关信息可以查看：[PHP Fileinfo page](http://php.net/manual/en/book.fileinfo.php)。
 
 <a name="mime"></a>
-## Getting MIME Types
+## 获取MIME类型
 
-#### Getting the MIME type associated with an extension:
+#### 通过拓展名获取MIME类型：
 
 	echo File::mime('gif');
 
