@@ -66,19 +66,18 @@
 #### 通过拓展名获取MIME类型：
 
 	echo File::mime('gif');
-
-> **Note:** This method simply returns the MIME type defined for the extension in the **application/config/mimes.php** file.
+> **Note:** 这个函数只会简单的返回在**application/cofig/mimes.php**中被定义过的MIME类型。
 
 <a name="cpdir"></a>
-## Copying Directories
+## 复制目录
 
-#### Recursively copy a directory to a given location:
+#### 通过递归复制一个目录到指定目录：
 
 	File::cpdir($directory, $destination);
 
 <a name="rmdir"></a>
-## Removing Directories
+## 移除目录
 
-#### Recursively delete a directory:
+#### 递归删除目录：
 
 	File::rmdir($directory);

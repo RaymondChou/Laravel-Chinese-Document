@@ -1,6 +1,6 @@
 # Input & Cookies
 
-## Contents
+## 目录
 
 - [Input](#input)
 - [JSON Input](#json)
@@ -13,23 +13,23 @@
 <a name="input"></a>
 ## Input
 
-The **Input** class handles input that comes into your application via GET, POST, PUT, or DELETE requests. Here are some examples of how to access input data using the Input class:
+**Input**类会处理应用程序中来自GET、POST、PUT或者DELETE类型的请求。下面是一些用Input类来访问Input数据的例子：
 
-#### Retrieve a value from the input array:
+#### 获取input数组中指定的值：
 
 	$email = Input::get('email');
 
-> **Note:** The "get" method is used for all request types (GET, POST, PUT, and DELETE), not just GET requests.
+> **Note:** "get"方法适用于所有类型(GET,POST,PUT和DELETE)的请求，而不仅仅是指GET请求。
 
-#### Retrieve all input from the input array:
+#### 获取input数组中的所有数据：
 
 	$input = Input::get();
 
-#### Retrieve all input including the $_FILES array:
+#### 获取所有input数据，包括$_FILES数组：
 
 	$input = Input::all();
 
-By default, *null* will be returned if the input item does not exist. However, you may pass a different default value as a second parameter to the method:
+默认情况下，如果获取的input数据不存在时会返回*null*值。不过你可以通过给函数传递第二个参数来替代*null*值：
 
 #### Returning a default value if the requested input item doesn't exist:
 
