@@ -31,31 +31,31 @@
 
 默认情况下，如果获取的input数据不存在时会返回*null*值。不过你可以通过给函数传递第二个参数来替代*null*值：
 
-#### Returning a default value if the requested input item doesn't exist:
+#### 当请求的数据不存在时返回一个默认值：
 
 	$name = Input::get('name', 'Fred');
 
-#### Using a Closure to return a default value:
+#### 把匿名函数作为默认返回值：
 
 	$name = Input::get('name', function() {return 'Fred';});
 
-#### Determining if the input contains a given item:
+#### 检查input数组中是否包含指定条目：
 
 	if (Input::has('name')) ...
 
-> **Note:** The "has" method will return *false* if the input item is an empty string.
+> **Note:** 当检查的数据不存在的时候"has"方法会返回*false*。
 
 <a name="json"></a>
 ## JSON Input
 
-When working with JavaScript MVC frameworks like Backbone.js, you will need to get the JSON posted by the application. To make your life easier, we've included the `Input::json` method:
+当使用像Backbone.js这样的JavaScript MVC框架时，你可能需要获取应用程序发送的JSON数据。Laravel框架提供了'Input::json'方法使你的工作更加轻松：
 
-#### Get JSON input to the application:
+#### 获取来自应用程序的JSON数据：
 
 	$data = Input::json();
 
 <a name="files"></a>
-## Files
+## 文件类
 
 #### Retrieving all items from the $_FILES array:
 
