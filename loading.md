@@ -10,6 +10,8 @@
 <a name="the-basics"></a>
 ## 基础
 
+自动加载类允许你通过lazily的方式来加载需要的类文件，而不用每次都写繁琐的*require* 和*include*语句。
+
 Auto-loading allows you to lazily load class files when they are needed without explicitly *requiring* or *including* them. So, only the classes you actually need are loaded for any given request to your application, and you can just jump right in and start using any class without loading it's related file.
 
 By default, the **models** and **libraries** directories are registered with the auto-loader in the **application/start.php** file. The loader uses a class to file name loading convention, where all file names are lower-cased. So for instance, a "User" class within the models directory should have a file name of "user.php". You may also nest classes within sub-directories. Just namespace the classes to match the directory structure. So, a "Entities\User" class would have a file name of "entities/user.php" within the models directory.

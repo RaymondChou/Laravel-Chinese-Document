@@ -57,15 +57,15 @@
 <a name="files"></a>
 ## 文件类
 
-#### Retrieving all items from the $_FILES array:
+#### 获取$_FILES数组：
 
 	$files = Input::file();
 
-#### Retrieving an item from the $_FILES array:
+#### 获取$_FILES数组中的指定数据：
 
 	$picture = Input::file('picture');
 
-#### Retrieving a specific item from a $_FILES array:
+#### 获取$_FILES数组中特定条目的size:
 
 	$size = Input::file('picture.size');
 
