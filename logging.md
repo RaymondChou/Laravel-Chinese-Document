@@ -1,15 +1,15 @@
-# Errors & Logging
+# 错误和记录
 
-## Contents
+## 目录
 
-- [Basic Configuration](#basic-configuration)
-- [Logging](#logging)
-- [The Logger Class](#the-logger-class)
+- [基本设置](#basic-configuration)
+- [记录](#logging)
+- [Logger类](#the-logger-class)
 
 <a name="basic-configuration"></a>
-## Basic Configuration
+## 基本设置
 
-All of the configuration options regarding errors and logging live in the **application/config/errors.php** file. Let's jump right in.
+所有与错误和记录有关的设置都保存在**application/config/errors.php**文件中，让我们来看看它的内容。
 
 ### Ignored Errors
 
