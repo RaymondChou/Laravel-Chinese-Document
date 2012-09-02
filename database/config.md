@@ -1,19 +1,19 @@
-# Database Configuration
+# 数据库设置
 
-## Contents
+## 目录
 
 - [Quick Start Using SQLite](#quick)
-- [Configuring Other Databases](#server)
-- [Setting The Default Connection Name](#default)
+- [配置其他数据库](#server)
+- [设置默认数据库](#default)
 
-Laravel supports the following databases out of the box:
+Laravel支持一下几种数据库：
 
 - MySQL
 - PostgreSQL
 - SQLite
 - SQL Server
 
-All of the database configuration options live in the **application/config/database.php** file.
+所有数据库设置选项都保存在**application/config/database.php**文件中：
 
 <a name="quick"></a>
 ## Quick Start Using SQLite

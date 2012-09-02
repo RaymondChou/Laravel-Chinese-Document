@@ -1,8 +1,10 @@
 # Routing
+# 路由
 
 ## Contents
+## 目录
 
-- [The Basics](#the-basics)
+- [基础](#the-basics)
 - [Wildcards](#wildcards)
 - [The 404 Events](#the-404-event)
 - [Filters](#filters)
